@@ -25,5 +25,5 @@ _RUN_LENGTH_HOURS_ should be an integer representing the number of hours to run 
 
 _OPTIONS_ should be a string with the options to pass to the model, e.g. `-hoursRes 1`.
 
-# Example
-run.sh RISICO2023 202506120000 0 "-hoursRes 1"
+# Example usage
+docker run  --platform="linux/amd64" -it --rm -v ./example/RISICO2023:/opt/risico/RISICO2023 -v ./example:/opt/risico/output risico-runner RISICO2023 202506120000 72 "-hoursRes 1"
