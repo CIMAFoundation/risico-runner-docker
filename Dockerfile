@@ -22,6 +22,7 @@ COPY lib/ lib/
 # Make the run script executable
 RUN chmod +x ./lib/run.sh
 RUN chmod +x ./lib/${EXECUTABLE}
+RUN chmod +x /opt/risico/lib/risico_aggregation_with_raster
 RUN chmod +x /opt/risico/lib/copy_nc_files.sh
 RUN chmod +x /opt/risico/lib/copy_nc_aggregation_cache.sh
 
