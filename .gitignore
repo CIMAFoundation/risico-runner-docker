@@ -1,5 +1,6 @@
 .DS_Store
 example/archive/
+!example/archive/.gitkeep
 example/RISICO2023/INPUT/20*
 example/RISICO2023/OUTPUT*/**
 !example/RISICO2023/OUTPUT*/.gitkeep
