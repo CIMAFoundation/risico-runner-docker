@@ -1,0 +1,150 @@
+models:
+  - type: RISICO
+    model_name: RISICO2023
+    model_version: v2025
+    cells_file_path: /opt/risico/RISICO2023/STATIC/risico2023_input_1km.txt
+    warm_state_path: /opt/risico/RISICO2023/STATE0/state0RISICO2023_
+    warm_state_hour: 0
+    vegetation_file: /opt/risico/RISICO2023/STATIC/p_vegetazione.csv
+    ppf_file: null
+    output_time_resolution: 1
+    use_temperature_effect: false
+    use_ndvi: false
+    output_types:      
+      - internal_name: RISICO2023
+        name: RISICO2023
+        path: /opt/risico/RISICO2023/OUTPUT-NC
+        grid_path: /opt/risico/RISICO2023/GRID/input_1km_GRID.txt
+        format: NETCDF
+        variables:
+          # OUTPUTS
+          - internal_name: dffm
+            name: UMB
+            cluster_mode: Min
+            precision: -1
+          - internal_name: W
+            name: W
+            cluster_mode: Max
+            precision: -2
+          - internal_name: V
+            name: V
+            cluster_mode: Max
+            precision: 0
+          - internal_name: I
+            name: I
+            cluster_mode: Max
+            precision: 0
+          - internal_name: VNDWI
+            name: VNDWI
+            cluster_mode: Max
+            precision: 0
+          - internal_name: INDWI
+            name: INDWI
+            cluster_mode: Max
+            precision: 0
+          - internal_name: NDWI
+            name: NDWI
+            cluster_mode: Mean
+            precision: -3
+
+          # INPUTS
+          - internal_name: temperature
+            name: INPUT_T
+            cluster_mode: Max
+            precision: -1
+          - internal_name: humidity
+            name: INPUT_RH
+            cluster_mode: Min
+            precision: -1
+          - internal_name: windSpeed
+            name: INPUT_WS
+            cluster_mode: Max
+            precision: -1
+          - internal_name: windDir
+            name: INPUT_WD
+            cluster_mode: Mean
+            precision: -1
+          - internal_name: rain
+            name: INPUT_RAIN
+            cluster_mode: Min
+            precision: -1
+          - internal_name: snowCover
+            name: INPUT_SNOW
+            cluster_mode: Min
+            precision: -1
+
+
+      - internal_name: RISICO2023
+        name: RISICO2023
+        path: /opt/risico/RISICO2023/OUTPUT-PNG
+        grid_path: /opt/risico/RISICO2023/GRID/input_1km_GRID.txt
+        format: PNGWJSON
+        variables:
+          # INPUTS
+          - internal_name: temperature
+            name: INPUT_T
+            cluster_mode: Max
+            precision: -1
+          - internal_name: humidity
+            name: INPUT_RH
+            cluster_mode: Min
+            precision: -1
+          - internal_name: windSpeed
+            name: INPUT_WS
+            cluster_mode: Max
+            precision: -1
+          - internal_name: windDir
+            name: INPUT_WD
+            cluster_mode: Mean
+            precision: -1
+          - internal_name: rain
+            name: INPUT_RAIN
+            cluster_mode: Min
+            precision: -1
+          - internal_name: snowCover
+            name: INPUT_SNOW
+            cluster_mode: Min
+            precision: -1
+          # OUTPUTS
+          - internal_name: dffm
+            name: UMB
+            cluster_mode: Min
+            precision: -1
+          - internal_name: W
+            name: W
+            cluster_mode: Max
+            precision: -2
+          - internal_name: V
+            name: V
+            cluster_mode: Max
+            precision: 0
+          - internal_name: I
+            name: I
+            cluster_mode: Max
+            precision: 0
+          - internal_name: VNDWI
+            name: VNDWI
+            cluster_mode: Max
+            precision: 0
+          - internal_name: INDWI
+            name: INDWI
+            cluster_mode: Max
+            precision: 0
+          - internal_name: NDWI
+            name: NDWI
+            cluster_mode: Mean
+            precision: -3        
+palettes:
+  INPUT_T: "/opt/risico/RISICO2023/PALETTE/INPUT_TEMPERATURE.pal"
+  INPUT_RH: "/opt/risico/RISICO2023/PALETTE/INPUT_HUMIDITY.pal"
+  INPUT_WS: "/opt/risico/RISICO2023/PALETTE/INPUT_WINDSPEED.pal"
+  INPUT_WD: "/opt/risico/RISICO2023/PALETTE/INPUT_WINDDIRECTION.pal"
+  INPUT_RAIN: "/opt/risico/RISICO2023/PALETTE/INPUT_RAIN.pal"
+  INPUT_SNOW: "/opt/risico/RISICO2023/PALETTE/INPUT_SNOW.pal"
+  UMB: "/opt/risico/RISICO2023/PALETTE/RISICO_UMB.pal"
+  W: "/opt/risico/RISICO2023/PALETTE/RISICO_W.pal"
+  V: "/opt/risico/RISICO2023/PALETTE/RISICO_V.pal"
+  I: "/opt/risico/RISICO2023/PALETTE/RISICO_I.pal"
+  INDWI: /opt/risico/RISICO2023/PALETTE/RISICO_I.pal
+  VNDWI: /opt/risico/RISICO2023/PALETTE/RISICO_V.pal
+  NDWI: /opt/risico/RISICO2023/PALETTE/RISICO_NDWI.pal

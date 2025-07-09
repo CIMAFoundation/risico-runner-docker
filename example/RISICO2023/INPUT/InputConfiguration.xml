@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<model modelname="RISICO2023"
+		spool="/opt/risico/RISICO2023/OUTPUT-NC" />
+
+	<variable name="Temperatura dell'aria">
+	Temperatura dell'aria
+		<type class="Experience.Services.ModelRunner.InputHandler.Drops2CoverageInputDescriptor"
+			server="http://dds-test.cimafoundation.org/dds/rest/"
+			verbose="true"
+			name="Temperatura dell'aria"
+			dataid="ICON_LAMI"
+			variable="2t"
+			level="2.0"
+			prefix="ICON"
+			suffix="T"
+			format="zbin"
+			order="0" />
+	</variable>
+
+	<variable name="Temperatura di rugiada e umidita relativa">
+	Temperatura di rugiada
+
+		<type class="Experience.Services.ModelRunner.InputHandler.Drops2CoverageInputDescriptor"
+			server="http://dds-test.cimafoundation.org/dds/rest/"
+			verbose="true"
+			name="Umidità Relativa"
+			dataid="ICON_LAMI"
+			variable="rh"
+			level="2.0"
+			prefix="ICON"
+			suffix="H"
+			format="zbin"
+			order="0" />
+	</variable>
+
+	<variable name="Precipitazione cumulata">
+	Precipitazione cumulata
+		<type class="Experience.Services.ModelRunner.InputHandler.Drops2CoverageInputDescriptor"
+			server="http://dds-test.cimafoundation.org/dds/rest/"
+			verbose="true"
+			name="Precipitazione cumulata"
+			dataid="ICON_LAMI"
+			variable="tp"
+			level="-"
+			prefix="ICON"
+			suffix="P"
+			doDiff="true"
+			cumulate="1"
+			format="zbin"
+			order="0" />
+	</variable>
+
+	<variable name="Componente zonale del vento">
+	Componente zonale del vento (U)
+		<type class="Experience.Services.ModelRunner.InputHandler.Drops2CoverageInputDescriptor"
+			server="http://dds-test.cimafoundation.org/dds/rest/"
+			verbose="true"
+			name="Componente zonale del vento"
+			dataid="ICON_LAMI"
+			variable="10u"
+			level="10.0"
+			prefix="ICON"
+			suffix="U"
+			format="zbin"
+			order="0" />
+	</variable>
+
+	<variable name="Componente meridionale del vento">
+	Componente meridionale del vento (V)
+
+		<type class="Experience.Services.ModelRunner.InputHandler.Drops2CoverageInputDescriptor"
+			server="http://dds-test.cimafoundation.org/dds/rest/"
+			verbose="true"
+			name="Componente meridionale del vento"
+			dataid="ICON_LAMI"
+			variable="10v"
+			level="10.0"
+			prefix="ICON"
+			suffix="V"
+			format="zbin"
+			order="0" />
+	</variable>
+
+	<variable name="Snow Depth">
+		Snow Depth
+
+		NEVE
+		<type class="Experience.Services.ModelRunner.InputHandler.Drops2CoverageInputDescriptor"
+			server="http://dds-test.cimafoundation.org/dds/rest/"
+			verbose="true"
+			name="S3Mv2 Snow Depth"
+			dataid="S3Mv2"
+			variable="S3MItaly-HS"
+			level="-"
+			prefix="S3Mv2"
+			suffix="SNOW"
+			format="zbin"
+			order="0"
+			/>
+
+
+		<type class="Experience.Services.ModelRunner.InputHandler.Drops2CoverageInputDescriptor"
+			server="http://dds-test.cimafoundation.org/dds/rest/"
+			verbose="true"
+			name="ICON_LAMI Snow Depth"
+			dataid="ICON_LAMI"
+			variable="sd"
+			level="-"
+			prefix="ICON"
+			suffix="SNOW"
+			format="zbin"
+			order="1"
+			rotate="true" />
+	</variable>	
+
+
+	<variable name="Pioggia Radar">
+		<type class="Experience.Services.ModelRunner.InputHandler.GeoTiffInputDescriptor"
+			basefolder="/opt/mcm_operativo/geotiff/"
+			filepattern="MCM_$DATE.tif"
+			nodata="-9999.0f"
+			cumulatehours="1"
+			cumulateoffset="0"
+			name="Mappa Pioggia Merging Radar"
+			variable="RADAR_P"
+			prefix="RADAR"
+			suffix="O"
+			format="zbin"
+			order="1" />
+	</variable>
+
+
+	<variable name="Sentinel2 ndwi">
+		<type class="Experience.Services.ModelRunner.InputHandler.Drops2CoverageInputDescriptor"
+			server="http://dds.cimafoundation.org/rest/"
+			verbose="true"
+			name="Sentinel2 SNAPSHOT - NDWI"
+			dataid="SENTINEL2_SNAPSHOT"
+			variable="scaledndwi"
+			level="-"
+			prefix="SENTINEL2"
+			suffix="NDWI"
+			format="zbin"
+			order="0"
+			vectorscript="for(var i=0; i&lt;values.length; i++){
+			var v = values[i];
+			if( v == -1010){
+				values[i] = -9999;
+			} else {
+				v = v/100;
+				v = Math.min(1.0, Math.max(v, 0.0));
+				values[i] = v; 
+			}
+		}" />
+	</variable>
+</root>
+

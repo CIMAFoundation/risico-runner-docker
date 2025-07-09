@@ -1,0 +1,213 @@
+shapefiles: &id001
+  - id_field: PRO_COM
+    shapefile: /opt/risico/shp/Italia/comuni_ISTAT2001.shp
+  - id_field: COD_PRO
+
+shapefile_aggregation:
+  input_path: /opt/risico/RISICO2023/OUTPUT-NC/
+  output_path: /opt/risico/RISICO2023/AGGRCACHE/
+
+  variables:
+  - aggregations:
+    - offset: 0
+      resolution: 24
+      shapefiles: *id001
+      stats:
+      - PERC90
+      - PERC75
+      - PERC50
+      - MEAN
+    - offset: 0
+      resolution: 3
+      shapefiles: *id001
+      stats:
+      - PERC90
+      - PERC75
+      - PERC50
+      - MEAN
+    - offset: 0
+      resolution: 6
+      shapefiles: *id001
+      stats:
+      - PERC90
+      - PERC75
+      - PERC50
+      - MEAN
+    - offset: 0
+      resolution: 12
+      shapefiles: *id001
+      stats:
+      - PERC90
+      - PERC75
+      - PERC50
+      - MEAN
+    variable: V
+  - aggregations:
+    - offset: 0
+      resolution: 24
+      shapefiles: *id001
+      stats:
+      - PERC90
+      - PERC75
+      - PERC50
+      - MEAN
+    - offset: 0
+      resolution: 3
+      shapefiles: *id001
+      stats:
+      - PERC90
+      - PERC75
+      - PERC50
+      - MEAN
+    - offset: 0
+      resolution: 6
+      shapefiles: *id001
+      stats:
+      - PERC90
+      - PERC75
+      - PERC50
+      - MEAN
+    - offset: 0
+      resolution: 12
+      shapefiles: *id001
+      stats:
+      - PERC90
+      - PERC75
+      - PERC50
+      - MEAN
+    variable: VNDWI
+  - aggregations:
+    - offset: 0
+      resolution: 24
+      shapefiles: *id001
+      stats:
+      - PERC90
+      - PERC75
+      - PERC50
+      - MEAN
+    - offset: 0
+      resolution: 3
+      shapefiles: *id001
+      stats:
+      - PERC90
+      - PERC75
+      - PERC50
+      - MEAN
+    - offset: 0
+      resolution: 6
+      shapefiles: *id001
+      stats:
+      - PERC90
+      - PERC75
+      - PERC50
+      - MEAN
+    - offset: 0
+      resolution: 12
+      shapefiles: *id001
+      stats:
+      - PERC90
+      - PERC75
+      - PERC50
+      - MEAN
+    variable: I
+  - aggregations:
+    - offset: 0
+      resolution: 24
+      shapefiles: *id001
+      stats:
+      - PERC90
+      - PERC75
+      - PERC50
+      - MEAN
+    - offset: 0
+      resolution: 3
+      shapefiles: *id001
+      stats:
+      - PERC90
+      - PERC75
+      - PERC50
+      - MEAN
+    - offset: 0
+      resolution: 6
+      shapefiles: *id001
+      stats:
+      - PERC90
+      - PERC75
+      - PERC50
+      - MEAN
+    - offset: 0
+      resolution: 12
+      shapefiles: *id001
+      stats:
+      - PERC90
+      - PERC75
+      - PERC50
+      - MEAN
+    variable: INDWI
+
+
+
+raster_aggregation:
+  input_path: /opt/risico/RISICO2023/OUTPUT-NC/
+  output_path: /opt/risico/RISICO2023/OUTPUT-NC/
+
+  variables:
+  - aggregations:
+    - offset: 0
+      resolution: 24
+      stats:
+      - PERC75
+      - PERC50
+      - MEAN
+      - MAX
+    variable: V
+
+  - aggregations:
+    - offset: 0
+      resolution: 24
+      stats:
+      - PERC75
+      - PERC50
+      - MEAN
+      - MAX
+    variable: I
+
+  - aggregations:
+    - offset: 0
+      resolution: 24
+      stats:
+      - PERC75
+      - PERC50
+      - MEAN
+      - MAX
+    variable: VNDWI
+
+  - aggregations:
+    - offset: 0
+      resolution: 24
+      stats:
+      - PERC75
+      - PERC50
+      - MEAN
+      - MAX
+    variable: INDWI
+
+  - aggregations:
+    - offset: 0
+      resolution: 24
+      stats:
+      - PERC75
+      - PERC50
+      - MEAN
+      - MAX
+    variable: W
+
+  - aggregations:
+    - offset: 0
+      resolution: 24
+      stats:
+      - IPERC50
+      - MEAN
+      - MIN
+    variable: UMB
+
