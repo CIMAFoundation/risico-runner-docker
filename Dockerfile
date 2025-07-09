@@ -19,6 +19,4 @@ RUN chmod +x ./lib/run.sh \
     ./lib/copy_nc_files.sh \
     ./lib/copy_nc_aggregation_cache.sh
 
-RUN test -f /opt/lib/run.sh || (echo "run.sh not found!" && exit 1)
-#ENTRYPOINT ["/opt/lib/run.sh"]
-ENTRYPOINT ["bash"]
+ENTRYPOINT ["/opt/lib/run.sh"]

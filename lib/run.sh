@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "Running ModelRunner with args: $@"
+
 MODEL=$1
 RUNDATE=$2
 HOURSEACHRUN=$3
@@ -28,8 +30,16 @@ rm $RISICOPATH/OUTPUT*/* || true
 # execution
 java 	-cp "$LIBPATH/jar/*:$LIBPATH/Runner.jar" -Djava.library.path="$LIBPATH:/usr/lib/jni" \
 		Experience.Services.ModelRunner.ModelRunner \
-		$OPTIONS -overwrite -InputDir $RISICOPATH/INPUT -path $RISICOPATH -hoursEachRun $HOURSEACHRUN -exe $EXECUTABLE \
-		-conf configuration.yml -future $*
+		-date $RUNDATE \
+		-overwrite \
+		-InputDir $RISICOPATH/INPUT \
+		-path $RISICOPATH \
+		-hoursEachRun $HOURSEACHRUN \
+		-exe $EXECUTABLE \
+		-conf configuration.yml \
+		-future \
+		$OPTIONS \
+		$*
 
 
 # copy intersections.db to local
