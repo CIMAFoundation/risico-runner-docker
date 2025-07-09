@@ -4,7 +4,7 @@ RUNDATE=$2
 
 declare -x RISICOPATH=/opt/risico/$MODEL
 declare -x RUNDATEDIR=${RUNDATE:0:4}/${RUNDATE:4:2}/${RUNDATE:6:2}/${RUNDATE:8:4}
-declare -x NCDFPATH=$DDS_OUTPUT_PATH/$MODEL/netcdf/$RUNDATEDIR/
+declare -x NCDFPATH=$ARCHIVE_PATH/$MODEL/netcdf/$RUNDATEDIR/
 
 echo "Copying netcdf files for model $MODEL to $NCDFPATH"
 

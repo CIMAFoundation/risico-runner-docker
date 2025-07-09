@@ -4,8 +4,13 @@ RUNDATE=$2
 HOURSEACHRUN=$3
 OPTIONS=$4
 
+# check if archivepath is existent
+if [ ! -d "$ARCHIVE_PATH" ]; then
+    echo "Archive path $ARCHIVE_PATH does not exist."
+    exit 1
+fi
 
-INTERSECTIONSPATHREMOTE=$DDS_CACHE_PATH/$MODEL/netcdf/intersections.db
+INTERSECTIONSPATHREMOTE=$ARCHIVE_PATH/$MODEL/netcdf/intersections.db
 
 RISICOPATH=/opt/risico/$MODEL
 # check if the model directory exists
@@ -29,7 +34,7 @@ java 	-cp "$LIBPATH/jar/*:$LIBPATH/Runner.jar" -Djava.library.path="$LIBPATH:/us
 
 # copy intersections.db to local
 # generate aggregations
-risico_aggregation_with_raster  --config $RISICOPATH/aggregation-config.yaml  --intersection-cache $RISICOPATH/intersections.db
+risico_aggregation_with_raster  --config $RISICOPATH/aggregation-config.yml  --intersection-cache $RISICOPATH/intersections.db
 # copy intersections.db back to remote
 cp $RISICOPATH/intersections.db $INTERSECTIONSPATHREMOTE
 

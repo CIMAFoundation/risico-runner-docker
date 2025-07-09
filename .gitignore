@@ -1,2 +1,10 @@
-**/.DS_Store
-example
+.DS_Store
+example/archive/
+example/RISICO2023/INPUT/20*
+example/RISICO2023/OUTPUT*/**
+!example/RISICO2023/OUTPUT*/.gitkeep
+example/RISICO2023/AGGRCACHE/*
+!example/RISICO2023/AGGRCACHE/.gitkeep
+example/RISICO2023/STATE0/**
+!example/RISICO2023/STATE0/.gitkeep
+example/RISICO2023/intersections.db

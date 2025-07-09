@@ -4,7 +4,7 @@ RUNDATE=$2
 CACHEDIR=$3
 
 declare -x RUNDATEDIR=${RUNDATE:0:4}/${RUNDATE:4:2}/${RUNDATE:6:2}/${RUNDATE:8:4}
-declare -x NCDFCACHEPATH=$DDS_OUTPUT_PATH/$MODEL/netcdf/$RUNDATEDIR/CACHE/
+declare -x NCDFCACHEPATH=$ARCHIVE_PATH/$MODEL/netcdf/$RUNDATEDIR/CACHE/
 
 echo "Copying netcdf aggregation cache for model $MODEL to $NCDFCACHEPATH"
 # check if the model directory exists
