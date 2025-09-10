@@ -13,8 +13,9 @@ if [ ! -d "$ARCHIVE_PATH" ]; then
 fi
 
 INTERSECTIONSPATHREMOTE=$ARCHIVE_PATH/$MODEL/netcdf/intersections.db
-
 RISICOPATH=/opt/risico/$MODEL
+ARGFILE=$RISICOPATH/args.txt
+
 # check if the model directory exists
 if [ ! -d "$RISICOPATH" ]; then
 	echo "Model directory $RISICOPATH does not exist."
@@ -26,10 +27,13 @@ cd $RISICOPATH
 # cleanup
 rm $RISICOPATH/AGGRCACHE/* || true
 rm $RISICOPATH/OUTPUT*/* || true
+# clean argfile
+rm $ARGFILE || true
+# clean input directory
+find $RISICOPATH/INPUT -mindepth 1 -type d -exec rm -rf {} +
 
-ARGFILE=$RISICOPATH/args.txt
 
-# execution
+# extract data from dds
 java 	-cp "$LIBPATH/jar/*:$LIBPATH/Runner.jar" -Djava.library.path="$LIBPATH:/usr/lib/jni" \
 		Experience.Services.ModelRunner.ModelRunner \
 		-date $RUNDATE \
