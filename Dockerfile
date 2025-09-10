@@ -14,6 +14,7 @@ COPY lib/ lib/
 COPY lib/jar lib/jar
 
 RUN chmod +x ./lib/run.sh \
+    ./lib/save-command.sh \
     ./lib/${EXECUTABLE} \
     ./lib/risico_aggregation_with_raster \
     ./lib/copy_nc_files.sh \
